@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<meta charset="pt-BR">
 
 <head>
     <meta charset="UTF-8">
@@ -9,27 +8,77 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"rel="stylesheet">
-    <script src="scripts.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="scripts.js" defer></script>
     <title>Previsão do Tempo</title>
 </head>
 
 <body>
-    <div class="caixa-maior">
-        <input class="input-cidade" placeholder="Digite o nome da cidade" type="text">
-        <button class="botao-buscar" onclick="cliqueiNoBotao()">
-            <img class="img-busca" src="https://www.svgrepo.com/show/488200/find.svg">
-        </button>
-        <div class="caixa-media">
-            <h2 class="cidade">Tempo em Fortaleza</h2>
+    <canvas id="chuva"></canvas>
+    <canvas id="raios"></canvas>
+    <div id="nuvens"></div>
+    <div id="sol"></div>
 
-            <p class="tempo">29°C</p>
-            <div class="caixa-menor">
-                <img class="img-previsao" src="https://openweathermap.org/img/wn/04n.png">
-                <p class="texto-previsao">Nublado </p>
+    <div class="app">
+        <div class="caixa-maior">
+            <div id="historico" class="historico-container"></div>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <canvas id="graficoClima" style="margin-top: 20px; max-height: 150px;"></canvas>
+            <input class="input-cidade" placeholder="Digite o nome da cidade" type="text">
+            <button class="botao-busca" onclick="cliqueiNoBotao()">
+                <img class="img-busca" src="https://www.svgrepo.com/show/488200/find.svg">
+            </button>
+            <div class="caixa-media">
+                <h2 class="cidade">Tempo em --</h2>
+
+                <p class="tempo">--°C</p>
+
+                <div class="max-min-container">
+                    <span>🔼 Máx: <b class="maxima">--°C</b></span>
+                    <span>🔽 Mín: <b class="minima">--°C</b></span>
+                </div>
+
+                <div class="caixa-menor">
+                    <img class="img-previsao" src="">
+                    <p class="texto-previsao">--</p>
+                </div>
+
+                <div class="dados-container">
+                    <div class="dado">
+                        <span class="emoji-dado">🌡️</span>
+                        <div>
+                            <p class="titulo-dado">Sensação</p>
+                            <p class="valor-dado sensacao">--°C</p>
+                        </div>
+                    </div>
+
+                    <div class="dado">
+                        <span class="emoji-dado">☁️</span>
+                        <div>
+                            <p class="titulo-dado">Nuvens</p>
+                            <p class="valor-dado nuvens-porcentagem">--%</p>
+                        </div>
+                    </div>
+
+                    <div class="dado">
+                        <span class="emoji-dado">🌬️</span>
+                        <div>
+                            <p class="titulo-dado">Vento</p>
+                            <p class="valor-dado vento">-- km/h</p>
+                        </div>
+                    </div>
+
+                    <div class="dado">
+                        <span class="emoji-dado">🍃</span>
+                        <div>
+                            <p class="titulo-dado">Ar (AQI)</p>
+                            <p class="valor-dado" id="qualidade-ar">--</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p class="umidade">Umidade: 76%</p>
         </div>
+    </div>
     </div>
 </body>
 
